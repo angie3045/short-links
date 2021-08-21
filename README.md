@@ -31,3 +31,6 @@ In edit configurations
 Once Running open the URL displayed
 
 
+## Time
+Spent about 3 hours.
+

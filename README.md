@@ -25,7 +25,7 @@ In edit configurations
 2. In the module add: flask
 3. In the parameters add: run
 4. In the environment variables add FLASK_APP=url_shorter
-![alt text](./Pycharm.png)
+![alt text](Pycharm.PNG)
 
 
 Once Running open the URL displayed

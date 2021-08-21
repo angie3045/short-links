@@ -2,7 +2,10 @@ from flask import Flask, request, render_template, redirect
 
 app = Flask(__name__)
 
-base_62_to_url = dict() # Dictionary that stores base62 to long URL
+# TODO: Instead of having this in a dictionary we can use a DB
+# Having an assumption that there will be a lot of data stored
+# I would recommend to use a NoSQL database like Mongo db
+base_62_to_url = dict()  # Dictionary that stores base62 to long URL
 
 
 def base_62_encode(string):
@@ -36,10 +39,8 @@ def decode_url(short):
     :param short:
     :return:
     """
-    # We need to find the URL and redirect to that
-    print(short)
-    url = base_62_to_url[short]
-    return redirect(url)
+    url = base_62_to_url[short]  # We need to find the URL and redirect to that
+    return redirect(url)  # Redirecting to the original URL
 
 
 @app.route('/', methods=['POST'])
@@ -50,7 +51,7 @@ def encode_url():
     It also generates the url to display on the front end as shot_url variable
     :return:
     """
-    url = request.form['text']
-    short_url = base_62_encode(url)
-    base_62_to_url[short_url] = url
-    return render_template("index.html", short_url=request.url + short_url)
+    url = request.form['text']  # Getting URL
+    short_url = base_62_encode(url)  # Encoding it
+    base_62_to_url[short_url] = url  # Adding it to the dictionary
+    return render_template("index.html", short_url=request.url + short_url)  # now with the short link
